@@ -17,6 +17,10 @@
 		2827AFB8221865CE00CC8F2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2827AFB6221865CE00CC8F2E /* LaunchScreen.storyboard */; };
 		2827AFC3221865CE00CC8F2E /* sonificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827AFC2221865CE00CC8F2E /* sonificationTests.swift */; };
 		2827AFCE221865CE00CC8F2E /* sonificationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827AFCD221865CE00CC8F2E /* sonificationUITests.swift */; };
+<<<<<<< HEAD
+=======
+		2827AFDC221F603F00CC8F2E /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827AFDB221F603F00CC8F2E /* Line.swift */; };
+>>>>>>> sound on line
 		976CC2D31FC8B2A3C79D9591 /* Pods_sonificationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A8E611AC5B5BA0E8DD37D2 /* Pods_sonificationTests.framework */; };
 		C131069FA956E75E61AD21DE /* Pods_sonification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66FD341605D495FDB3BA738 /* Pods_sonification.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +60,10 @@
 		2827AFC9221865CE00CC8F2E /* sonificationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sonificationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2827AFCD221865CE00CC8F2E /* sonificationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sonificationUITests.swift; sourceTree = "<group>"; };
 		2827AFCF221865CE00CC8F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		2827AFDB221F603F00CC8F2E /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+>>>>>>> sound on line
 		2869C0AB7A8E03D5A45AFEF4 /* Pods-sonification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonification.release.xcconfig"; path = "Target Support Files/Pods-sonification/Pods-sonification.release.xcconfig"; sourceTree = "<group>"; };
 		32D7239A8C3E3718689E6BBD /* Pods-sonificationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonificationTests.debug.xcconfig"; path = "Target Support Files/Pods-sonificationTests/Pods-sonificationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		37385E2B4DE6BDD5A8F5671D /* Pods_sonificationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sonificationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +139,7 @@
 				2827AFA7221865CD00CC8F2E /* AppDelegate.swift */,
 				2827AFA9221865CD00CC8F2E /* GameScene.sks */,
 				2827AFAD221865CD00CC8F2E /* GameScene.swift */,
+				2827AFDB221F603F00CC8F2E /* Line.swift */,
 				2827AFAF221865CD00CC8F2E /* GameViewController.swift */,
 				2827AFB1221865CD00CC8F2E /* Main.storyboard */,
 				2827AFB4221865CE00CC8F2E /* Assets.xcassets */,
@@ -168,7 +177,10 @@
 				431FF57FE3E781E5F1B3BF48 /* Pods-sonificationUITests.debug.xcconfig */,
 				1729B6D0939E95D05BF77CC6 /* Pods-sonificationUITests.release.xcconfig */,
 			);
+<<<<<<< HEAD
 			name = Pods;
+=======
+>>>>>>> sound on line
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -377,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2827AFAE221865CD00CC8F2E /* GameScene.swift in Sources */,
+				2827AFDC221F603F00CC8F2E /* Line.swift in Sources */,
 				2827AFB0221865CD00CC8F2E /* GameViewController.swift in Sources */,
 				2827AFA8221865CD00CC8F2E /* AppDelegate.swift in Sources */,
 			);

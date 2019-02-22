@@ -34,22 +34,10 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
-    func startSound(){
-        let oscillator = AKOscillator()
-        AudioKit.output = oscillator
-        do{
-            try AudioKit.start()
-        } catch{
-            print("fail")
-        }
-        oscillator.start()
-        sleep(3)
-        oscillator.stop()
-    }
     
-    override func viewDidAppear(_ animated: Bool) {
-        startSound()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        startSound()
+//    }
 
     override var shouldAutorotate: Bool {
         return true

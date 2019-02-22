@@ -8,22 +8,73 @@
 
 import SpriteKit
 import GameplayKit
+import AudioKit
 
 class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    private var lines = [Line]()
+    private var oscillator = AKOscillator()
     
     override func didMove(to view: SKView) {
+
+        initSound()
         var yourline = SKShapeNode()
         var pathToDraw = CGMutablePath()
-        pathToDraw.move(to: CGPoint(x:((view.frame.maxX / -2)+50.0), y:0.0))
-        pathToDraw.addLine(to: CGPoint(x:((view.frame.maxX / 2)-50.0), y:0.0))
+        var line1 = Line(start: CGPoint(x:(50.0), y:(view.frame.maxY / 2)), end: CGPoint(x:(view.frame.maxX-50.0), y:(view.frame.maxY / 2)),color: SKColor.red )
+        lines.append(line1)
+        print(lines.count)
+        pathToDraw.move(to: line1.start)
+        pathToDraw.addLine(to: line1.end)
         yourline.path = pathToDraw
-        yourline.strokeColor = SKColor.red
+        yourline.strokeColor = line1.color
         yourline.lineWidth = 50.0
         addChild(yourline)
 
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let position = touch.location(in: view)
+            print(position)
+            print(lines[0].start)
+            print(lines[0].end)
+            if position.x > lines[0].start.x && position.x < lines[0].end.x{
+                let y = position.y - lines[0].start.y
+                if abs(y) <= 25{
+                    startSound()
+                }
+        }
+    }
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        endSound()
+    }
+    //    func touchMoved(toPoint pos : CGPoint) {
+    //        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
+    //            n.position = pos
+    //            n.strokeColor = SKColor.blue
+    //            self.addChild(n)
+    //        }
+    //    }
+    func initSound(){
+        AudioKit.output = oscillator
+        do{
+            try AudioKit.start()
+        } catch{
+            print("fail")
+        }
+    }
+    
+    func startSound(){
+        oscillator.start()
+    }
+    
+    func endSound(){
+        oscillator.stop()
+    }
+        
 //
 //        // Get label node from scene and store it for use later
 //        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
@@ -44,7 +95,6 @@ class GameScene: SKScene {
 //                                              SKAction.fadeOut(withDuration: 0.5),
 //                                              SKAction.removeFromParent()]))
 //        }
-    }
     
     
 //    func touchDown(atPoint pos : CGPoint) {
@@ -62,6 +112,7 @@ class GameScene: SKScene {
 //            self.addChild(n)
 //        }
 //    }
+
 //
 //    func touchUp(atPoint pos : CGPoint) {
 //        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
@@ -71,27 +122,14 @@ class GameScene: SKScene {
 //        }
 //    }
 //
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if let label = self.label {
-//            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-//        }
-//
-//        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-//    }
+
 //
 //    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
 //    }
 //
 //
+
 //    override func update(_ currentTime: TimeInterval) {
 //        // Called before each frame is rendered
 //    }
