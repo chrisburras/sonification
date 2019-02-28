@@ -24,7 +24,6 @@ class GameScene: SKScene {
         var pathToDraw = CGMutablePath()
         var line1 = Line(start: CGPoint(x:(50.0), y:(view.frame.maxY / 2)), end: CGPoint(x:(view.frame.maxX-50.0), y:(view.frame.maxY / 2)),color: SKColor.red )
         lines.append(line1)
-        print(lines.count)
         pathToDraw.move(to: line1.start)
         pathToDraw.addLine(to: line1.end)
         yourline.path = pathToDraw
@@ -37,27 +36,51 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let position = touch.location(in: view)
-            print(position)
-            print(lines[0].start)
-            print(lines[0].end)
+//            print(position)
+//            print(lines[0].start)
+//            print(lines[0].end)
             if position.x > lines[0].start.x && position.x < lines[0].end.x{
                 let y = position.y - lines[0].start.y
                 if abs(y) <= 25{
+                    oscillator.frequency = calcFrequency(y: Double(position.y))
+                    oscillator.amplitude = calcAmplitude(x: Double(position.x))
                     startSound()
                 }
         }
     }
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        oscillator.frequency = 440
         endSound()
     }
-    //    func touchMoved(toPoint pos : CGPoint) {
-    //        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-    //            n.position = pos
-    //            n.strokeColor = SKColor.blue
-    //            self.addChild(n)
-    //        }
-    //    }
+//    func touchMoved(toPoint pos : CGPoint) {
+//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
+//            n.position = pos
+//            n.strokeColor = SKColor.blue
+//            self.addChild(n)
+//        }
+//    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches{
+            let position = touch.location(in: view)
+            oscillator.amplitude = calcAmplitude(x: Double(position.x))
+            oscillator.frequency = calcFrequency(y: Double(position.y))
+            print(oscillator.amplitude)
+            //print(oscillator.frequency)
+            //amplitude starts 1
+            //frequency starts 440
+        }
+    }
+    func calcFrequency(y: Double) -> Double{
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        return ((abs(y - Double(screenSize.height)) / Double(screenSize.height)) * 600 ) + 300
+    }
+    func calcAmplitude(x: Double) -> Double{
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        return ((x / Double(screenSize.width)) * 0.8) + 0.2
+    }
     func initSound(){
         AudioKit.output = oscillator
         do{
