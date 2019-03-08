@@ -18,6 +18,9 @@
 		2827AFC3221865CE00CC8F2E /* sonificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827AFC2221865CE00CC8F2E /* sonificationTests.swift */; };
 		2827AFCE221865CE00CC8F2E /* sonificationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827AFCD221865CE00CC8F2E /* sonificationUITests.swift */; };
 		2827AFDC221F603F00CC8F2E /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827AFDB221F603F00CC8F2E /* Line.swift */; };
+		2827AFE02231B6FA00CC8F2E /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827AFDF2231B6FA00CC8F2E /* AudioEngine.swift */; };
+		2827AFF62231E20700CC8F2E /* guitarloopmaybe.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2827AFF52231E20700CC8F2E /* guitarloopmaybe.wav */; };
+		2827AFFA2231E9E400CC8F2E /* yeezy.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2827AFF92231E9E400CC8F2E /* yeezy.wav */; };
 		976CC2D31FC8B2A3C79D9591 /* Pods_sonificationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A8E611AC5B5BA0E8DD37D2 /* Pods_sonificationTests.framework */; };
 		C131069FA956E75E61AD21DE /* Pods_sonification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C66FD341605D495FDB3BA738 /* Pods_sonification.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,9 @@
 		2827AFCD221865CE00CC8F2E /* sonificationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sonificationUITests.swift; sourceTree = "<group>"; };
 		2827AFCF221865CE00CC8F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2827AFDB221F603F00CC8F2E /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		2827AFDF2231B6FA00CC8F2E /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
+		2827AFF52231E20700CC8F2E /* guitarloopmaybe.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = guitarloopmaybe.wav; sourceTree = "<group>"; };
+		2827AFF92231E9E400CC8F2E /* yeezy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = yeezy.wav; sourceTree = "<group>"; };
 		2869C0AB7A8E03D5A45AFEF4 /* Pods-sonification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonification.release.xcconfig"; path = "Target Support Files/Pods-sonification/Pods-sonification.release.xcconfig"; sourceTree = "<group>"; };
 		32D7239A8C3E3718689E6BBD /* Pods-sonificationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonificationTests.debug.xcconfig"; path = "Target Support Files/Pods-sonificationTests/Pods-sonificationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		37385E2B4DE6BDD5A8F5671D /* Pods_sonificationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sonificationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				2827AFA7221865CD00CC8F2E /* AppDelegate.swift */,
+				2827AFF52231E20700CC8F2E /* guitarloopmaybe.wav */,
+				2827AFF92231E9E400CC8F2E /* yeezy.wav */,
 				2827AFA9221865CD00CC8F2E /* GameScene.sks */,
 				2827AFAD221865CD00CC8F2E /* GameScene.swift */,
 				2827AFDB221F603F00CC8F2E /* Line.swift */,
@@ -139,6 +147,7 @@
 				2827AFB4221865CE00CC8F2E /* Assets.xcassets */,
 				2827AFB6221865CE00CC8F2E /* LaunchScreen.storyboard */,
 				2827AFB9221865CE00CC8F2E /* Info.plist */,
+				2827AFDF2231B6FA00CC8F2E /* AudioEngine.swift */,
 			);
 			path = sonification;
 			sourceTree = "<group>";
@@ -171,7 +180,6 @@
 				431FF57FE3E781E5F1B3BF48 /* Pods-sonificationUITests.debug.xcconfig */,
 				1729B6D0939E95D05BF77CC6 /* Pods-sonificationUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -284,6 +292,8 @@
 			files = (
 				2827AFB3221865CD00CC8F2E /* Main.storyboard in Resources */,
 				2827AFAA221865CD00CC8F2E /* GameScene.sks in Resources */,
+				2827AFF62231E20700CC8F2E /* guitarloopmaybe.wav in Resources */,
+				2827AFFA2231E9E400CC8F2E /* yeezy.wav in Resources */,
 				2827AFB5221865CE00CC8F2E /* Assets.xcassets in Resources */,
 				2827AFB8221865CE00CC8F2E /* LaunchScreen.storyboard in Resources */,
 			);
@@ -381,6 +391,7 @@
 			files = (
 				2827AFAE221865CD00CC8F2E /* GameScene.swift in Sources */,
 				2827AFDC221F603F00CC8F2E /* Line.swift in Sources */,
+				2827AFE02231B6FA00CC8F2E /* AudioEngine.swift in Sources */,
 				2827AFB0221865CD00CC8F2E /* GameViewController.swift in Sources */,
 				2827AFA8221865CD00CC8F2E /* AppDelegate.swift in Sources */,
 			);
