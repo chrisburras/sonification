@@ -43,14 +43,14 @@ class AudioEngine {
     func changePitch(y: Double){
         let screenSize: CGRect = UIScreen.main.bounds
         let screenHeight = Double(screenSize.height)
-        let newPitch = ((y / screenHeight) * 15) - 6
+        let newPitch = ((y / screenHeight) * 10) - 8
         pitchshifter.shift = newPitch
     }
     func changeSpeed(x: Double){
         let screenSize: CGRect = UIScreen.main.bounds
         let screenWidth = Double(screenSize.width)
-        let newSpeed = ((x / screenWidth) * 2) + 0.25
-        print(newSpeed)
+        let newSpeed = ((x / screenWidth) * 1) + 0.55
+        print(pitchshifter.shift)
         varispeed.rate = newSpeed
     }
     func stopSound(){

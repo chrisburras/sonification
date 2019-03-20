@@ -64,6 +64,7 @@
 		2827AFDF2231B6FA00CC8F2E /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
 		2827AFF52231E20700CC8F2E /* guitarloopmaybe.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = guitarloopmaybe.wav; sourceTree = "<group>"; };
 		2827AFF92231E9E400CC8F2E /* yeezy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = yeezy.wav; sourceTree = "<group>"; };
+		2827AFFB2242B71D00CC8F2E /* sonification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sonification.entitlements; sourceTree = "<group>"; };
 		2869C0AB7A8E03D5A45AFEF4 /* Pods-sonification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonification.release.xcconfig"; path = "Target Support Files/Pods-sonification/Pods-sonification.release.xcconfig"; sourceTree = "<group>"; };
 		32D7239A8C3E3718689E6BBD /* Pods-sonificationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sonificationTests.debug.xcconfig"; path = "Target Support Files/Pods-sonificationTests/Pods-sonificationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		37385E2B4DE6BDD5A8F5671D /* Pods_sonificationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sonificationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +137,7 @@
 		2827AFA6221865CD00CC8F2E /* sonification */ = {
 			isa = PBXGroup;
 			children = (
+				2827AFFB2242B71D00CC8F2E /* sonification.entitlements */,
 				2827AFA7221865CD00CC8F2E /* AppDelegate.swift */,
 				2827AFF52231E20700CC8F2E /* guitarloopmaybe.wav */,
 				2827AFF92231E9E400CC8F2E /* yeezy.wav */,
@@ -254,6 +256,14 @@
 				TargetAttributes = {
 					2827AFA3221865CD00CC8F2E = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+						};
 					};
 					2827AFBD221865CE00CC8F2E = {
 						CreatedOnToolsVersion = 10.1;
@@ -576,7 +586,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Amit.sonification;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unc.sonification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -595,7 +605,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Amit.sonification;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unc.sonification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
