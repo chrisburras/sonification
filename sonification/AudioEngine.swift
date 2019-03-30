@@ -23,7 +23,7 @@ class AudioEngine {
     init() {
         // Set up a player to the loop the file's playback
         do {
-            file = try AKAudioFile(readFileName: "yeezy.wav")
+            file = try AKAudioFile(readFileName: "bell2[1].wav")
         } catch {
             AKLog("File Not Found")
             return
@@ -63,6 +63,32 @@ class AudioEngine {
             player.play()
         }
     }
+    func changeSound(fileName: String){
+        do {
+            try AudioKit.stop()
+        } catch {
+            AKLog("failed to stop")
+            return
+        }
+        do {
+            file = try AKAudioFile(readFileName: fileName)
+        } catch {
+            AKLog("File Not Found")
+            return
+        }
+        player = AKPlayer(audioFile: file)
+        player.buffering = .always
+        player.isLooping = true
+        varispeed = AKVariSpeed(player)
+        pitchshifter = AKPitchShifter(varispeed)
+        AudioKit.output = pitchshifter
+        do {
+            try AudioKit.start()
+        } catch {
+            AKLog("AudioKit did not start!")
+        }
+    }
+
 }
 
 // Create your engine and start the player

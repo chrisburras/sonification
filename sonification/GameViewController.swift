@@ -12,6 +12,8 @@ import GameplayKit
 import AudioKit
 
 class GameViewController: UIViewController {
+    
+    var skView: SKView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,7 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
+            skView = view
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
@@ -35,14 +38,24 @@ class GameViewController: UIViewController {
         }
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
+    @IBAction func homeButton(_ sender: UIButton) {
+        do{
+            try AudioKit.stop()
+        }catch{
+            print("fail")
+        }
+        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func nextButton(_ sender: UIButton) {
+        if let gameScene = skView.scene as? GameScene{
+            gameScene.nextTutorial()
+        }
+    }
+    //    override func viewDidAppear(_ animated: Bool) {
 //        startSound()
 //    }
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -50,7 +63,9 @@ class GameViewController: UIViewController {
             return .all
         }
     }
-
+    override var shouldAutorotate: Bool {
+        return true
+    }
     override var prefersStatusBarHidden: Bool {
         return true
     }
