@@ -35,8 +35,12 @@ class GameScene: SKScene {
         let pathToDraw = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:(screenWidth - 200), height: 50), cornerRadius: 16).cgPath
         let pathToDraw2 = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:(screenWidth - 200), height: 50), cornerRadius: 16).cgPath
         shape.path = pathToDraw
+        shape.isAccessibilityElement = true
+        shape.accessibilityLabel = ""
+        shape2.isAccessibilityElement = true
         shape2.path = pathToDraw2
-        shape.fillColor = UIColor.red
+        shape2.accessibilityLabel = ""
+        shape.fillColor = UIColor.orange
         shape2.fillColor = UIColor.blue
         shape.lineWidth = 1
         shape2.lineWidth = 1
@@ -64,21 +68,25 @@ class GameScene: SKScene {
             shape2.isHidden = false
             shape2.position = CGPoint(x: 100, y: 600)
         }else if tutorial == 2{
-            //1 diagonal
+            //1 diagonal top left
             shape1Noise = piano
+            shape.fillColor = UIColor.purple
             shape2.isHidden = true
-            shape.position = CGPoint(x: 100, y: 50)
-            shape.zRotation = CGFloat(deg2rad(30))
+            shape.position = CGPoint(x: 100, y: 600)
+            shape.zRotation = CGFloat(deg2rad(-30))
         }else if tutorial == 3{
             //2 diagonal
             shape2Noise = buzz
+            shape2.fillColor = UIColor.red
             shape.position = CGPoint(x: 100, y: 150)
+            shape.zRotation = CGFloat(deg2rad(30))
             shape2.position = CGPoint(x: 150, y: 50)
             shape2.zRotation = CGFloat(deg2rad(15))
             shape2.isHidden = false
         }else if tutorial == 4{
             //1 vertical
             shape1Noise = electric
+            shape.fillColor = UIColor.green
             shape2.isHidden = true
             let pathToDraw = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:(screenHeight - 200), height: 50), cornerRadius: 16).cgPath
             shape.path = pathToDraw
@@ -87,6 +95,7 @@ class GameScene: SKScene {
         }else {
             //1 vertical 1 diagonal
             shape2Noise = alien
+            shape2.fillColor = UIColor.orange
             shape.position = CGPoint(x: 400, y: 50)
             let pathToDraw = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:(screenHeight - 200), height: 50), cornerRadius: 16).cgPath
             shape2.path = pathToDraw
@@ -99,6 +108,7 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let position = touch.location(in: self)
+            print(position)
             if shape.contains(position) {
                 if (fileNameInUse == shape1Noise){
                     engine.changePitch(y: Double(position.y))
@@ -136,8 +146,10 @@ class GameScene: SKScene {
     
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touches")
         for touch in touches{
             let position = touch.location(in: self)
+            print(position)
             if shape.contains(position) {
                 if (fileNameInUse == shape1Noise){
                     engine.changePitch(y: Double(position.y))

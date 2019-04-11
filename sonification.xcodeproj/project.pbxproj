@@ -20,6 +20,8 @@
 		2827AFDC221F603F00CC8F2E /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827AFDB221F603F00CC8F2E /* Line.swift */; };
 		2827AFE02231B6FA00CC8F2E /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827AFDF2231B6FA00CC8F2E /* AudioEngine.swift */; };
 		2827AFFA2231E9E400CC8F2E /* yeezy.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2827AFF92231E9E400CC8F2E /* yeezy.wav */; };
+		283A8D0C225249DA003F0E40 /* gearicon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 283A8D0B225249DA003F0E40 /* gearicon2.png */; };
+		283A8D0E225621D3003F0E40 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283A8D0D225621D3003F0E40 /* SettingsViewController.swift */; };
 		2850591D224E5E25005F2ED8 /* alien.wav in Resources */ = {isa = PBXBuildFile; fileRef = 28505915224E5E24005F2ED8 /* alien.wav */; };
 		2850591F224E5E25005F2ED8 /* electric.wav in Resources */ = {isa = PBXBuildFile; fileRef = 28505917224E5E24005F2ED8 /* electric.wav */; };
 		28505920224E5E25005F2ED8 /* bell1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 28505918224E5E25005F2ED8 /* bell1.wav */; };
@@ -67,6 +69,8 @@
 		2827AFDF2231B6FA00CC8F2E /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
 		2827AFF92231E9E400CC8F2E /* yeezy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = yeezy.wav; sourceTree = "<group>"; };
 		2827AFFB2242B71D00CC8F2E /* sonification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sonification.entitlements; sourceTree = "<group>"; };
+		283A8D0B225249DA003F0E40 /* gearicon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gearicon2.png; sourceTree = "<group>"; };
+		283A8D0D225621D3003F0E40 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		28505915224E5E24005F2ED8 /* alien.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alien.wav; sourceTree = "<group>"; };
 		28505917224E5E24005F2ED8 /* electric.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = electric.wav; sourceTree = "<group>"; };
 		28505918224E5E25005F2ED8 /* bell1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell1.wav; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 			children = (
 				2827AFFB2242B71D00CC8F2E /* sonification.entitlements */,
 				2827AFA7221865CD00CC8F2E /* AppDelegate.swift */,
+				283A8D0B225249DA003F0E40 /* gearicon2.png */,
 				28505915224E5E24005F2ED8 /* alien.wav */,
 				28505918224E5E25005F2ED8 /* bell1.wav */,
 				28505919224E5E25005F2ED8 /* buzz1.wav */,
@@ -159,6 +164,7 @@
 				2827AFB6221865CE00CC8F2E /* LaunchScreen.storyboard */,
 				2827AFB9221865CE00CC8F2E /* Info.plist */,
 				2827AFDF2231B6FA00CC8F2E /* AudioEngine.swift */,
+				283A8D0D225621D3003F0E40 /* SettingsViewController.swift */,
 			);
 			path = sonification;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				2827AFFA2231E9E400CC8F2E /* yeezy.wav in Resources */,
 				2827AFB5221865CE00CC8F2E /* Assets.xcassets in Resources */,
 				28505920224E5E25005F2ED8 /* bell1.wav in Resources */,
+				283A8D0C225249DA003F0E40 /* gearicon2.png in Resources */,
 				2827AFB8221865CE00CC8F2E /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +423,7 @@
 				2827AFE02231B6FA00CC8F2E /* AudioEngine.swift in Sources */,
 				2827AFB0221865CD00CC8F2E /* GameViewController.swift in Sources */,
 				2827AFA8221865CD00CC8F2E /* AppDelegate.swift in Sources */,
+				283A8D0E225621D3003F0E40 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +603,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J4QZ65T39F;
 				INFOPLIST_FILE = sonification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -616,6 +625,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J4QZ65T39F;
 				INFOPLIST_FILE = sonification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

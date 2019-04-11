@@ -23,7 +23,7 @@ class AudioEngine {
     init() {
         // Set up a player to the loop the file's playback
         do {
-            file = try AKAudioFile(readFileName: "bell2[1].wav")
+            file = try AKAudioFile(readFileName: "yeezy.wav")
         } catch {
             AKLog("File Not Found")
             return
