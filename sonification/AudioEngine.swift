@@ -50,7 +50,6 @@ class AudioEngine {
         let screenSize: CGRect = UIScreen.main.bounds
         let screenWidth = Double(screenSize.width)
         let newSpeed = ((x / screenWidth) * 1) + 0.55
-        print(pitchshifter.shift)
         varispeed.rate = newSpeed
     }
     func stopSound(){
@@ -62,6 +61,9 @@ class AudioEngine {
         if !player.isPlaying{
             player.play()
         }
+    }
+    func fileInPlay() -> String{
+        return String(file.fileName)
     }
     func changeSound(fileName: String){
         do {
