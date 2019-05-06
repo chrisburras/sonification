@@ -26,6 +26,7 @@ class Sandbox: SKScene {
     private var fileNameInUse = "alien.wav"
     private var points = [CGPoint()]
     private var lastUsed = 0
+    private var box = SKShapeNode()
 
     //alien, bell, piano, buzz, guitar
     
@@ -60,7 +61,7 @@ class Sandbox: SKScene {
             shapes.append(shape)
             addChild(shape)
         }
-        let box = SKShapeNode(rectOf: CGSize(width: screenWidth, height: Double(screenSize.height - 260)))
+        box = SKShapeNode(rectOf: CGSize(width: screenWidth, height: Double(screenSize.height - 260)))
         box.position = CGPoint(x: Double(screenWidth / 2), y: Double(screenSize.height / 2))
         box.isAccessibilityElement = true
         box.accessibilityLabel = ""
@@ -81,6 +82,7 @@ class Sandbox: SKScene {
     }
     
     func tap(point: CGPoint){
+        engine.stopSound()
         let screenSize: CGRect = UIScreen.main.bounds
         let screenHeight = Double(screenSize.height)
         print(point)
@@ -92,12 +94,8 @@ class Sandbox: SKScene {
             print(a!.y)
             print(b!.y)
             print(screenHeight)
-            if (a!.y < 160 || b!.y < 160){
-                print("don't draw here")
-                return
-            }
-            if (abs(Double(a!.y) - screenHeight) < 200 || abs(Double(b!.y) - screenHeight) < 250){
-                print("don't draw here")
+            if !box.contains(a!) || !box.contains(b!){
+                print("don't Build here")
                 return
             }
             let xDist = Double(b!.x - a!.x)

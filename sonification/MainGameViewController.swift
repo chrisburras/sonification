@@ -13,6 +13,7 @@ import UIKit
 
 
 class MainGameViewController: UIViewController {
+    private var currentLevel = 1
     
     @IBOutlet weak var skView: SKView!
     
@@ -45,7 +46,6 @@ class MainGameViewController: UIViewController {
         //}
     }
     @objc func doubleTapped(sender:UITapGestureRecognizer){
-        print("t")
         let location = sender.location(in: self.view)
         if let gameScene = skView.scene as? MainGameScene{
             let x = gameScene.tap(point: location)
@@ -69,20 +69,33 @@ class MainGameViewController: UIViewController {
     
     @IBAction func nextButton(_ sender: UIButton) {
         if let gameScene = skView.scene as? MainGameScene{
+            currentLevel = currentLevel + 1
             let x = gameScene.nextLevel()
-            if (x % 2) == 0{
-                nextButton.isEnabled = false
-                nextButton.backgroundColor = UIColor.gray
+            print(currentLevel)
+            if currentLevel == x{
+                if (x % 2) == 0{
+                    nextButton.isEnabled = false
+                    nextButton.backgroundColor = UIColor.gray
+                }else{
+                    nextButton.isEnabled = true
+                    nextButton.backgroundColor = UIColor(red:0.96, green:0.13, blue:1.00, alpha:1.0)
+                    
+                }
             }else{
                 nextButton.isEnabled = true
                 nextButton.backgroundColor = UIColor(red:0.96, green:0.13, blue:1.00, alpha:1.0)
-
             }
         }
     }
     
     
     @IBAction func previousButton(_ sender: UIButton) {
+        if let gameScene = skView.scene as? MainGameScene{
+            currentLevel = currentLevel - 1
+            gameScene.prevLevel()
+            nextButton.isEnabled = true
+            nextButton.backgroundColor = UIColor(red:0.96, green:0.13, blue:1.00, alpha:1.0)
+        }
     }
     /*
     // MARK: - Navigation
