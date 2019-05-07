@@ -27,6 +27,7 @@ class Sandbox: SKScene {
     private var points = [CGPoint()]
     private var lastUsed = 0
     private var box = SKShapeNode()
+    private var colorPicked = "alien.wav"
 
     //alien, bell, piano, buzz, guitar
     
@@ -118,13 +119,13 @@ class Sandbox: SKScene {
             shape.isAccessibilityElement = true
             shape.accessibilityLabel = ""
             shape.lineWidth = 1
-            if(fileNameInUse == alien){
+            if(colorPicked == alien){
                 shape.fillColor = UIColor.orange
-            }else if(fileNameInUse == bell){
+            }else if(colorPicked == bell){
                 shape.fillColor = UIColor.blue
-            }else if(fileNameInUse == buzz){
+            }else if(colorPicked == buzz){
                 shape.fillColor = UIColor.red
-            }else if(fileNameInUse == electric){
+            }else if(colorPicked == electric){
                 shape.fillColor = UIColor.green
             }else {
                 shape.fillColor = UIColor.purple
@@ -167,6 +168,7 @@ class Sandbox: SKScene {
                 }
             }
             if shapes[1].contains(position) {
+                colorPicked = alien
                 if (fileNameInUse == alien){
                     engine.startSound()
                 } else {
@@ -175,6 +177,7 @@ class Sandbox: SKScene {
                     engine.startSound()
                 }
             } else if shapes[2].contains(position)  {
+                colorPicked = bell
                 if (fileNameInUse == bell){
                     engine.startSound()
                 } else {
@@ -184,6 +187,7 @@ class Sandbox: SKScene {
                 }
             }
             else if shapes[3].contains(position)  {
+                colorPicked = piano
                 if (fileNameInUse == piano){
                     engine.startSound()
                 } else {
@@ -193,6 +197,7 @@ class Sandbox: SKScene {
                 }
             }
             else if shapes[4].contains(position)  {
+                colorPicked = buzz
                 if (fileNameInUse == buzz){
                     engine.startSound()
                 } else {
@@ -202,6 +207,7 @@ class Sandbox: SKScene {
                 }
             }
             else if shapes[5].contains(position)  {
+                colorPicked = electric
                 if (fileNameInUse == electric){
                     engine.startSound()
                 } else {
@@ -252,6 +258,7 @@ class Sandbox: SKScene {
             }
             if shapes[1].contains(position) {
                 hit = true
+                colorPicked = alien
                 if (fileNameInUse == alien){
                     engine.startSound()
                 } else {
@@ -261,6 +268,7 @@ class Sandbox: SKScene {
                 }
             } else if shapes[2].contains(position)  {
                 hit = true
+                colorPicked = bell
                 if (fileNameInUse == bell){
                     engine.startSound()
                 } else {
@@ -271,6 +279,7 @@ class Sandbox: SKScene {
             }
             else if shapes[3].contains(position)  {
                 hit = true
+                colorPicked = piano
                 if (fileNameInUse == piano){
                     engine.startSound()
                 } else {
@@ -281,6 +290,7 @@ class Sandbox: SKScene {
             }
             else if shapes[4].contains(position)  {
                 hit = true
+                colorPicked = buzz
                 if (fileNameInUse == buzz){
                     engine.startSound()
                 } else {
@@ -291,6 +301,7 @@ class Sandbox: SKScene {
             }
             else if shapes[5].contains(position)  {
                 hit = true
+                colorPicked = electric
                 if (fileNameInUse == electric){
                     engine.startSound()
                 } else {
