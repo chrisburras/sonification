@@ -37,9 +37,11 @@ class TutorialGameScene: SKScene {
         shape.path = pathToDraw
         shape.isAccessibilityElement = true
         shape.accessibilityLabel = ""
+        shape.accessibilityTraits = [UIAccessibilityTraits.allowsDirectInteraction]
         shape2.isAccessibilityElement = true
         shape2.path = pathToDraw2
         shape2.accessibilityLabel = ""
+        shape2.accessibilityTraits = [UIAccessibilityTraits.allowsDirectInteraction]
         shape.fillColor = UIColor.orange
         shape2.fillColor = UIColor.blue
         shape.lineWidth = 1
@@ -102,7 +104,7 @@ class TutorialGameScene: SKScene {
             shape.position = CGPoint(x: 40, y: 600)
             shape.zRotation = CGFloat(deg2rad(-30))
             return false
-        }else {
+        }else if tutorial == 5{
             //2 diagonal
             shape2Noise = buzz
             shape2.fillColor = UIColor.red
@@ -111,6 +113,22 @@ class TutorialGameScene: SKScene {
             shape2.position = CGPoint(x: 50, y: 50)
             shape2.zRotation = CGFloat(deg2rad(15))
             shape2.isHidden = false
+            return false
+        }else if tutorial == 6{
+            let halfPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:(screenWidth / 2) - 30, height: 60), cornerRadius: 16).cgPath
+            let quarterPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:(screenWidth / 4) - 30, height: 60), cornerRadius: 16).cgPath
+            shape.path = quarterPath
+            shape2.path = halfPath
+            shape.zRotation = 0
+            shape2.zRotation = 0
+            shape.position = CGPoint(x: 30, y: 350)
+            shape2.position = CGPoint(x: 30, y: 200)
+            return false
+        }else{
+            let thirdPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width:(screenWidth / 3 ) - 30, height: 60), cornerRadius: 16).cgPath
+            let twoThirdPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 2 * (screenWidth / 3 ) - 30, height: 60), cornerRadius: 16).cgPath
+            shape.path = thirdPath
+            shape2.path = twoThirdPath
             return true
         }
     }

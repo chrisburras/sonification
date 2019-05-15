@@ -9,6 +9,7 @@
 import SpriteKit
 import GameplayKit
 import AudioKit
+import AVFoundation
 
 class MainGameScene: SKScene {
     
@@ -54,6 +55,9 @@ class MainGameScene: SKScene {
         line2.accessibilityLabel = ""
         line3.isAccessibilityElement = true
         line3.accessibilityLabel = ""
+        line1.accessibilityTraits = [UIAccessibilityTraits.allowsDirectInteraction]
+        line2.accessibilityTraits = [UIAccessibilityTraits.allowsDirectInteraction]
+        line3.accessibilityTraits = [UIAccessibilityTraits.allowsDirectInteraction]
         line2.isHidden = true
         line3.isHidden = true
         line2.fillColor = UIColor.green
@@ -85,6 +89,9 @@ class MainGameScene: SKScene {
         addChild(line2)
         addChild(line3)
         addChild(line1)
+        line1.accessibilityTraits = [UIAccessibilityTraits.allowsDirectInteraction]
+        line2.accessibilityTraits = [UIAccessibilityTraits.allowsDirectInteraction]
+        line3.accessibilityTraits = [UIAccessibilityTraits.allowsDirectInteraction]
         points.removeAll()
         
     }
@@ -106,228 +113,18 @@ class MainGameScene: SKScene {
             }
         }
         if levelNum == 1{
-            print("level one")
-            points.removeAll()
-            for i in imagesInUse{
-                i.removeFromSuperview()
-            }
-            imagesInUse.removeAll()
-            line1.position = CGPoint(x: 175, y: (screenHeight / 2) - 25)
-            line1.isHidden = false
-            let appleImage = UIImage(named: "apple.png")
-            let appleImageView = UIImageView(image: appleImage!)
-            appleImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            appleImageView.isAccessibilityElement = true
-            appleImageView.accessibilityLabel = "Apple"
-            let appleLetter = UIImage(named: "a.png")
-            let appleLetterView = UIImageView(image: appleLetter!)
-            appleLetterView.isAccessibilityElement = true
-            appleLetterView.accessibilityLabel = "a"
-            appleLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            appleImageView.restorationIdentifier = "apple"
-            appleLetterView.restorationIdentifier = "a"
-            imagesInUse.append(appleImageView)
-            imagesInUse.append(appleLetterView)
-            view1.addSubview(appleLetterView)
-            view1.addSubview(appleImageView)
-            line2.isHidden = true
-            line3.isHidden = true
+            levelOne()
         }
         else if levelNum == 2 && highestLevelAvail >= levelNum{
-            print("level two")
-            points.removeAll()
-            for i in imagesInUse{
-                i.removeFromSuperview()
-            }
-            imagesInUse.removeAll()
-            line1.position = CGPoint(x: 175, y: (screenHeight / 2) - 25)
-            let appleImage = UIImage(named: "apple.png")
-            let appleImageView = UIImageView(image: appleImage!)
-            appleImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            appleImageView.isAccessibilityElement = true
-            appleImageView.accessibilityLabel = "Apple"
-            let appleLetter = UIImage(named: "a.png")
-            let appleLetterView = UIImageView(image: appleLetter!)
-            appleLetterView.isAccessibilityElement = true
-            appleLetterView.accessibilityLabel = "a"
-            appleLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            appleImageView.restorationIdentifier = "apple"
-            appleLetterView.restorationIdentifier = "a"
-            imagesInUse.append(appleImageView)
-            imagesInUse.append(appleLetterView)
-            view1.addSubview(appleLetterView)
-            view1.addSubview(appleImageView)
-            line1.isHidden = true
-            line2.isHidden = true
-            line3.isHidden = true
+            levelTwo()
         }else if levelNum == 3  && highestLevelAvail >= levelNum{
-            print("level three")
-            points.removeAll()
-            line1.position = CGPoint(x: 175, y: (screenHeight / 4))
-            for i in imagesInUse{
-                i.removeFromSuperview()
-            }
-            imagesInUse.removeAll()
-            line1.position = CGPoint(x: 175, y: (screenHeight / 4))
-            let appleImage = UIImage(named: "apple.png")
-            let appleImageView = UIImageView(image: appleImage!)
-            appleImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            appleImageView.isAccessibilityElement = true
-            appleImageView.accessibilityLabel = "Apple"
-            let appleLetter = UIImage(named: "a.png")
-            let appleLetterView = UIImageView(image: appleLetter!)
-            appleLetterView.isAccessibilityElement = true
-            appleLetterView.accessibilityLabel = "a"
-            appleLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            appleImageView.restorationIdentifier = "apple"
-            appleLetterView.restorationIdentifier = "a"
-            imagesInUse.append(appleImageView)
-            imagesInUse.append(appleLetterView)
-            view1.addSubview(appleLetterView)
-            view1.addSubview(appleImageView)
-            line2.position = CGPoint(x: 175, y: (screenHeight / 4) * 2)
-            line2.isHidden = false
-            line1.isHidden = false
-            let beeImage = UIImage(named: "bee.png")
-            let beeImageView = UIImageView(image: beeImage)
-            beeImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
-            beeImageView.isAccessibilityElement = true
-            beeImageView.accessibilityLabel = "Bumble Bee"
-            let beeLetter = UIImage(named: "b.png")
-            let beeLetterView = UIImageView(image: beeLetter)
-            beeLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
-            beeLetterView.isAccessibilityElement = true
-            beeLetterView.accessibilityLabel = "b"
-            beeImageView.restorationIdentifier = "bee"
-            beeLetterView.restorationIdentifier = "b"
-            imagesInUse.append(beeLetterView)
-            imagesInUse.append(beeImageView)
-            view1.addSubview(beeLetterView)
-            view1.addSubview(beeImageView)
-            
+            levelThree()
         }else if levelNum == 4  && highestLevelAvail >= levelNum{
-            print("level four")
-            points.removeAll()
-            for i in imagesInUse{
-                i.removeFromSuperview()
-            }
-            imagesInUse.removeAll()
-            line1.position = CGPoint(x: 175, y: (screenHeight / 4))
-            let appleImage = UIImage(named: "apple.png")
-            let appleImageView = UIImageView(image: appleImage!)
-            appleImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            appleImageView.isAccessibilityElement = true
-            appleImageView.accessibilityLabel = "Apple"
-            let appleLetter = UIImage(named: "a.png")
-            let appleLetterView = UIImageView(image: appleLetter!)
-            appleLetterView.isAccessibilityElement = true
-            appleLetterView.accessibilityLabel = "a"
-            appleLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            appleImageView.restorationIdentifier = "apple"
-            appleLetterView.restorationIdentifier = "a"
-            imagesInUse.append(appleImageView)
-            imagesInUse.append(appleLetterView)
-            view1.addSubview(appleLetterView)
-            view1.addSubview(appleImageView)
-            line2.position = CGPoint(x: 175, y: (screenHeight / 4) * 2)
-            line2.isHidden = false
-            line1.isHidden = false
-            let beeImage = UIImage(named: "bee.png")
-            let beeImageView = UIImageView(image: beeImage)
-            beeImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
-            beeImageView.isAccessibilityElement = true
-            beeImageView.accessibilityLabel = "Bumble Bee"
-            let beeLetter = UIImage(named: "b.png")
-            let beeLetterView = UIImageView(image: beeLetter)
-            beeLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
-            beeLetterView.isAccessibilityElement = true
-            beeLetterView.accessibilityLabel = "b"
-            beeImageView.restorationIdentifier = "bee"
-            beeLetterView.restorationIdentifier = "b"
-            imagesInUse.append(beeLetterView)
-            imagesInUse.append(beeImageView)
-            view1.addSubview(beeLetterView)
-            view1.addSubview(beeImageView)
-            line1.isHidden = true
-            line2.isHidden = true
-            line3.isHidden = true
-            
+            levelFour()
         }else if levelNum == 5  && highestLevelAvail >= levelNum{
-            print("level five")
-            points.removeAll()
-            for i in imagesInUse{
-                i.removeFromSuperview()
-            }
-            imagesInUse.removeAll()
-            line3.position = CGPoint(x: 175, y: (screenHeight / 5) * 3)
-            line3.isHidden = false
-            let arctangent = atan((screenHeight / 5 * 2) / (screenWidth - 350)) * 180 / Double.pi
-            let len = ((screenWidth - 350) * (screenWidth - 350) + (screenHeight / 5 * 2) * (screenHeight / 5 * 2)).squareRoot()
-            let pathToDraw = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: len, height: 50), cornerRadius: 16).cgPath
-            line3.path = pathToDraw
-            line1.path = pathToDraw
-            line3.zRotation = CGFloat(deg2rad(-arctangent))
-            line2.position = CGPoint(x: 175, y: (screenHeight / 5) * 2)
-            line2.isHidden = false
-            line1.position = CGPoint(x: 175, y: (screenHeight / 5))
-            line1.isHidden = false
-            line1.zRotation = CGFloat(deg2rad(arctangent))
-            let appleImage = UIImage(named: "apple.png")
-            let appleImageView = UIImageView(image: appleImage!)
-            appleImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            appleImageView.isAccessibilityElement = true
-            appleImageView.accessibilityLabel = "Apple"
-            let appleLetter = UIImage(named: "a.png")
-            let appleLetterView = UIImageView(image: appleLetter!)
-            appleLetterView.isAccessibilityElement = true
-            appleLetterView.accessibilityLabel = "a"
-            appleLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line3.position.y + 100)), width: 150, height: 150)
-            appleImageView.restorationIdentifier = "apple"
-            appleLetterView.restorationIdentifier = "a"
-            imagesInUse.append(appleImageView)
-            imagesInUse.append(appleLetterView)
-            view1.addSubview(appleLetterView)
-            view1.addSubview(appleImageView)
-
-            let beeImage = UIImage(named: "bee.png")
-            let beeImageView = UIImageView(image: beeImage)
-            beeImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
-            beeImageView.isAccessibilityElement = true
-            beeImageView.accessibilityLabel = "Bumble Bee"
-            let beeLetter = UIImage(named: "b.png")
-            let beeLetterView = UIImageView(image: beeLetter)
-            beeLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
-            beeLetterView.isAccessibilityElement = true
-            beeLetterView.accessibilityLabel = "b"
-            beeImageView.restorationIdentifier = "bee"
-            beeLetterView.restorationIdentifier = "b"
-            imagesInUse.append(beeLetterView)
-            imagesInUse.append(beeImageView)
-            view1.addSubview(beeLetterView)
-            view1.addSubview(beeImageView)
-            let carImage = UIImage(named: "car.png")
-            let carImageView = UIImageView(image: carImage)
-            carImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line3.position.y + 100)), width: 150, height: 150)
-            carImageView.isAccessibilityElement = true
-            carImageView.accessibilityLabel = "Car"
-            let carLetter = UIImage(named: "c.png")
-            let carLetterView = UIImageView(image: carLetter)
-            carLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
-            carLetterView.isAccessibilityElement = true
-            carLetterView.accessibilityLabel = "c"
-            carImageView.restorationIdentifier = "car"
-            carLetterView.restorationIdentifier = "c"
-            imagesInUse.append(carLetterView)
-            imagesInUse.append(carImageView)
-            view1.addSubview(carLetterView)
-            view1.addSubview(carImageView)
-            
+            levelFive()
         }else if levelNum == 6  && highestLevelAvail >= levelNum{
-            print("level six")
-            points.removeAll()
-            line1.isHidden = true
-            line2.isHidden = true
-            line3.isHidden = true
+            levelSix()
         }
         return highestLevelAvail
     }
@@ -342,6 +139,15 @@ class MainGameScene: SKScene {
     
     func tap(point: CGPoint) -> Bool{
         points.append(point)
+        for i in imagesInUse{
+            if i.frame.contains(point){
+                let utterance = AVSpeechUtterance(string: i.restorationIdentifier ?? "error")
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+                utterance.rate = 0.5
+                let synthesizer = AVSpeechSynthesizer()
+                synthesizer.speak(utterance)
+            }
+        }
         if points.count == 2{
             let pointa = points.popLast()!
             let pointb = points.popLast()!
@@ -511,4 +317,189 @@ class MainGameScene: SKScene {
         }
     }
 
+    func levelOne(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenWidth = Double(screenSize.width)
+        let screenHeight = Double(screenSize.height)
+        print("level one")
+        //A to Apple
+        //line 1 is displayed
+        points.removeAll()
+        for i in imagesInUse{
+            i.removeFromSuperview()
+        }
+        imagesInUse.removeAll()
+        line1.position = CGPoint(x: 175, y: (screenHeight / 2) - 25)
+        line1.isHidden = false
+        line1.zRotation = 0
+        let appleImage = UIImage(named: "apple.png")
+        let appleImageView = UIImageView(image: appleImage!)
+        appleImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
+        appleImageView.isAccessibilityElement = true
+        appleImageView.accessibilityLabel = "Apple"
+        let appleLetter = UIImage(named: "a.png")
+        let appleLetterView = UIImageView(image: appleLetter!)
+        appleLetterView.isAccessibilityElement = true
+        appleLetterView.accessibilityLabel = "a"
+        appleLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
+        appleImageView.restorationIdentifier = "apple"
+        appleLetterView.restorationIdentifier = "a"
+        imagesInUse.append(appleImageView)
+        imagesInUse.append(appleLetterView)
+        view1.addSubview(appleLetterView)
+        view1.addSubview(appleImageView)
+        line2.isHidden = true
+        line3.isHidden = true
+    }
+    func levelTwo(){
+        //a to apple
+        //line 1 is hidden
+        levelOne()
+        line1.isHidden = true
+        line2.isHidden = true
+        line3.isHidden = true
+    }
+    func levelThree(){
+        //level 3
+        //a to apple and b to bumble bee
+        //line 1 and 2 are displayed
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenWidth = Double(screenSize.width)
+        let screenHeight = Double(screenSize.height)
+        print("level three")
+        points.removeAll()
+        line1.position = CGPoint(x: 175, y: (screenHeight / 4))
+        for i in imagesInUse{
+            i.removeFromSuperview()
+        }
+        line1.zRotation = 0
+        line2.zRotation = 0
+        imagesInUse.removeAll()
+        line1.position = CGPoint(x: 175, y: (screenHeight / 4))
+        let appleImage = UIImage(named: "apple.png")
+        let appleImageView = UIImageView(image: appleImage!)
+        appleImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
+        appleImageView.isAccessibilityElement = true
+        appleImageView.accessibilityLabel = "Apple"
+        let appleLetter = UIImage(named: "a.png")
+        let appleLetterView = UIImageView(image: appleLetter!)
+        appleLetterView.isAccessibilityElement = true
+        appleLetterView.accessibilityLabel = "a"
+        appleLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
+        appleImageView.restorationIdentifier = "apple"
+        appleLetterView.restorationIdentifier = "a"
+        imagesInUse.append(appleImageView)
+        imagesInUse.append(appleLetterView)
+        view1.addSubview(appleLetterView)
+        view1.addSubview(appleImageView)
+        line2.position = CGPoint(x: 175, y: (screenHeight / 4) * 2)
+        line2.isHidden = false
+        line1.isHidden = false
+        line3.isHidden = true
+        let beeImage = UIImage(named: "bee.png")
+        let beeImageView = UIImageView(image: beeImage)
+        beeImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
+        beeImageView.isAccessibilityElement = true
+        beeImageView.accessibilityLabel = "Bumble Bee"
+        let beeLetter = UIImage(named: "b.png")
+        let beeLetterView = UIImageView(image: beeLetter)
+        beeLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
+        beeLetterView.isAccessibilityElement = true
+        beeLetterView.accessibilityLabel = "b"
+        beeImageView.restorationIdentifier = "bumble bee"
+        beeLetterView.restorationIdentifier = "b"
+        imagesInUse.append(beeLetterView)
+        imagesInUse.append(beeImageView)
+        view1.addSubview(beeLetterView)
+        view1.addSubview(beeImageView)
+    }
+    
+    func levelFour(){
+        //level four
+        //line 1 and 2 are hidden
+        levelThree()
+        line1.isHidden = true
+        line2.isHidden = true
+        line3.isHidden = true
+    }
+    
+    func levelFive(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenWidth = Double(screenSize.width)
+        let screenHeight = Double(screenSize.height)
+        print("level five")
+        points.removeAll()
+        for i in imagesInUse{
+            i.removeFromSuperview()
+        }
+        imagesInUse.removeAll()
+        line3.position = CGPoint(x: 175, y: (screenHeight / 5) * 3)
+        line3.isHidden = false
+        let arctangent = atan((screenHeight / 5 * 2) / (screenWidth - 350)) * 180 / Double.pi
+        let len = ((screenWidth - 350) * (screenWidth - 350) + (screenHeight / 5 * 2) * (screenHeight / 5 * 2)).squareRoot()
+        let pathToDraw = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: len, height: 50), cornerRadius: 16).cgPath
+        line3.path = pathToDraw
+        line1.path = pathToDraw
+        line3.zRotation = CGFloat(deg2rad(-arctangent))
+        line2.zRotation = 0
+        line2.position = CGPoint(x: 175, y: (screenHeight / 5) * 2)
+        line2.isHidden = false
+        line1.position = CGPoint(x: 175, y: (screenHeight / 5))
+        line1.isHidden = false
+        line1.zRotation = CGFloat(deg2rad(arctangent))
+        let appleImage = UIImage(named: "apple.png")
+        let appleImageView = UIImageView(image: appleImage!)
+        appleImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
+        appleImageView.isAccessibilityElement = true
+        appleImageView.accessibilityLabel = "Apple"
+        let appleLetter = UIImage(named: "a.png")
+        let appleLetterView = UIImageView(image: appleLetter!)
+        appleLetterView.isAccessibilityElement = true
+        appleLetterView.accessibilityLabel = "a"
+        appleLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line3.position.y + 100)), width: 150, height: 150)
+        appleImageView.restorationIdentifier = "apple"
+        appleLetterView.restorationIdentifier = "a"
+        imagesInUse.append(appleImageView)
+        imagesInUse.append(appleLetterView)
+        view1.addSubview(appleLetterView)
+        view1.addSubview(appleImageView)
+        let beeImage = UIImage(named: "bee.png")
+        let beeImageView = UIImageView(image: beeImage)
+        beeImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
+        beeImageView.isAccessibilityElement = true
+        beeImageView.accessibilityLabel = "Bumble Bee"
+        let beeLetter = UIImage(named: "b.png")
+        let beeLetterView = UIImageView(image: beeLetter)
+        beeLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line2.position.y + 100)), width: 150, height: 150)
+        beeLetterView.isAccessibilityElement = true
+        beeLetterView.accessibilityLabel = "b"
+        beeImageView.restorationIdentifier = "bee"
+        beeLetterView.restorationIdentifier = "b"
+        imagesInUse.append(beeLetterView)
+        imagesInUse.append(beeImageView)
+        view1.addSubview(beeLetterView)
+        view1.addSubview(beeImageView)
+        let carImage = UIImage(named: "car.png")
+        let carImageView = UIImageView(image: carImage)
+        carImageView.frame = CGRect(x: CGFloat(screenWidth - 175), y: CGFloat(screenHeight - Double(line3.position.y + 100)), width: 150, height: 150)
+        carImageView.isAccessibilityElement = true
+        carImageView.accessibilityLabel = "Car"
+        let carLetter = UIImage(named: "c.png")
+        let carLetterView = UIImageView(image: carLetter)
+        carLetterView.frame = CGRect(x: 25, y: CGFloat(screenHeight - Double(line1.position.y + 100)), width: 150, height: 150)
+        carLetterView.isAccessibilityElement = true
+        carLetterView.accessibilityLabel = "c"
+        carImageView.restorationIdentifier = "car"
+        carLetterView.restorationIdentifier = "c"
+        imagesInUse.append(carLetterView)
+        imagesInUse.append(carImageView)
+        view1.addSubview(carLetterView)
+        view1.addSubview(carImageView)
+    }
+    func levelSix(){
+        levelFive()
+        line1.isHidden = true
+        line2.isHidden = true
+        line3.isHidden = true
+    }
 }

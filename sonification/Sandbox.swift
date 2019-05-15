@@ -133,8 +133,10 @@ class Sandbox: SKScene {
             shape.zPosition = 1
             print(shapesInUse.count)
             shapesInUse.append(shape)
+            shape.accessibilityTraits = [UIAccessibilityTraits.allowsDirectInteraction]
             addChild(shape)
-            UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: shape)
+            UIAccessibility.post(notification: .screenChanged, argument: nil)
+            box.zPosition = 0.0
         }
     }
     
@@ -227,6 +229,7 @@ class Sandbox: SKScene {
         for touch in touches{
             var hit = false
             let position = touch.location(in: self)
+            print(position)
             if shapesInUse.count >= 1 && shapesInUse[lastUsed].contains(position){
                 engine.changePitch(y: Double(position.y))
                 engine.changeSpeed(x: Double(position.x))
